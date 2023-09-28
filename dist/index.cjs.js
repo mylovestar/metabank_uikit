@@ -4790,7 +4790,7 @@ var Logo = function (_a) {
     var linkComponent = React.useContext(MenuContext).linkComponent;
     var isAbsoluteUrl = href.startsWith("http");
     var innerLogo = (React__default['default'].createElement(React__default['default'].Fragment, null,
-        React__default['default'].createElement(StyledLogoWithTextIcon, { className: "mobile-icon", src: "/images/logo1.png" }),
+        React__default['default'].createElement(StyledLogoWithTextIcon, { className: "mobile-icon", src: "/images/logo2.png" }),
         React__default['default'].createElement(StyledLogoWithTextIcon, { className: "desktop-icon", src: "/images/logoText.png" })));
     return (React__default['default'].createElement(Flex, null, isAbsoluteUrl ? (React__default['default'].createElement(StyledLink, { as: "a", href: href, "aria-label": "Pancake home page" }, innerLogo)) : (React__default['default'].createElement(StyledLink, { href: href, as: linkComponent, "aria-label": "Pancake home page" }, innerLogo))));
 };
