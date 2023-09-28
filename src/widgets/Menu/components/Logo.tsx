@@ -50,8 +50,8 @@ const StyledLogoWithTextIcon = styled.img`
   margin-right: 16px;
   width: 100%;
   @media (max-width: 768px) {
-    max-width: 80px;
-    max-height: 80px;
+    max-width: 60px;
+    max-height: 45px;
   }
 `;
 
