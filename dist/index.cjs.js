@@ -2104,7 +2104,7 @@ var useMatchBreakpoints = function () {
             });
         };
     }, []);
-    return __assign(__assign({}, state), { isMobile: state.isXs || state.isSm, isTablet: state.isMd || state.isLg, isDesktop: state.isXl || state.isXxl });
+    return __assign(__assign({}, state), { isMobile: state.isMd || state.isLg, isTablet: state.isMd || state.isLg, isDesktop: state.isXl || state.isXxl });
 };
 
 var StyledOverlay = styled__default['default'](Box)(templateObject_1$W || (templateObject_1$W = __makeTemplateObject(["\n  position: fixed;\n  top: 0px;\n  left: 0px;\n  width: 100%;\n  height: 100%;\n  background-color: ", ";\n  z-index: 20;\n"], ["\n  position: fixed;\n  top: 0px;\n  left: 0px;\n  width: 100%;\n  height: 100%;\n  background-color: ", ";\n  z-index: 20;\n"])), function (_a) {
@@ -5005,11 +5005,10 @@ var Inner = styled__default['default'].div(templateObject_6 || (templateObject_6
 var Menu$1 = function (_a) {
     var _b;
     var _c = _a.linkComponent, linkComponent = _c === void 0 ? "a" : _c, userMenu = _a.userMenu, banner = _a.banner, globalMenu = _a.globalMenu, isDark = _a.isDark; _a.toggleTheme; var currentLang = _a.currentLang, setLang = _a.setLang, cakePriceUsd = _a.cakePriceUsd, links = _a.links, subLinks = _a.subLinks; _a.footerLinks; var activeItem = _a.activeItem, activeSubItem = _a.activeSubItem, langs = _a.langs; _a.buyCakeLabel; var children = _a.children;
-    var isTablet = useMatchBreakpoints().isTablet;
     var isMobile = useMatchBreakpoints().isMobile;
     var _d = React.useState(true), showMenu = _d[0], setShowMenu = _d[1];
     var refPrevOffset = React.useRef(typeof window === "undefined" ? 0 : window.pageYOffset);
-    var topBannerHeight = (isTablet && isMobile) ? TOP_BANNER_HEIGHT_MOBILE : TOP_BANNER_HEIGHT;
+    var topBannerHeight = isMobile ? TOP_BANNER_HEIGHT_MOBILE : TOP_BANNER_HEIGHT;
     var totalTopMenuHeight = banner ? MENU_HEIGHT + topBannerHeight : MENU_HEIGHT;
     React.useEffect(function () {
         var handleScroll = function () {
@@ -5050,9 +5049,9 @@ var Menu$1 = function (_a) {
                 React__default['default'].createElement(StyledNav, null,
                     React__default['default'].createElement(Flex, null,
                         React__default['default'].createElement(Logo$1, { isDark: isDark, href: (_b = homeLink === null || homeLink === void 0 ? void 0 : homeLink.href) !== null && _b !== void 0 ? _b : "/" }),
-                        (!isTablet && !isMobile) && React__default['default'].createElement(MenuItems, { items: links, activeItem: activeItem, activeSubItem: activeSubItem, ml: "24px" })),
+                        !isMobile && React__default['default'].createElement(MenuItems, { items: links, activeItem: activeItem, activeSubItem: activeSubItem, ml: "24px" })),
                     React__default['default'].createElement(Flex, { alignItems: "center", height: "100%" },
-                    (!isTablet && !isMobile) && (React__default['default'].createElement(Box, { mr: "12px" },
+                        !isMobile && (React__default['default'].createElement(Box, { mr: "12px" },
                             React__default['default'].createElement(CakePrice$1, { cakePriceUsd: cakePriceUsd }))),
                         React__default['default'].createElement(Box, { mt: "4px" },
                             React__default['default'].createElement(LangSelector$1, { currentLang: currentLang, langs: langs, setLang: setLang, buttonScale: "xs", color: "textSubtle", hideLanguage: true })),
@@ -5064,7 +5063,7 @@ var Menu$1 = function (_a) {
                 (subLinksMobileOnly === null || subLinksMobileOnly === void 0 ? void 0 : subLinksMobileOnly.length) > 0 && (React__default['default'].createElement(SubMenuItems, { items: subLinksMobileOnly, mt: totalTopMenuHeight + 1 + "px", activeItem: activeSubItem, isMobileOnly: true })))),
             React__default['default'].createElement(BodyWrapper, { mt: !subLinks ? totalTopMenuHeight + 1 + "px" : "0" },
                 React__default['default'].createElement(Inner, { isPushed: false, showMenu: showMenu }, children)),
-                (isTablet && isMobile) && React__default['default'].createElement(BottomNav, { items: links, activeItem: activeItem, activeSubItem: activeSubItem }))));
+                isMobile && React__default['default'].createElement(BottomNav, { items: links, activeItem: activeItem, activeSubItem: activeSubItem }))));
 };
 var templateObject_1$6, templateObject_2$3, templateObject_3$1, templateObject_4, templateObject_5, templateObject_6;
 
