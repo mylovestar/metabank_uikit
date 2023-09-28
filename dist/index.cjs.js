@@ -2104,7 +2104,7 @@ var useMatchBreakpoints = function () {
             });
         };
     }, []);
-    return __assign(__assign({}, state), { isMobile: state.isMd || state.isLg, isTablet: state.isMd || state.isLg, isDesktop: state.isXl || state.isXxl });
+    return __assign(__assign({}, state), { isMobile: state.isXs || state.isSm, isTablet: state.isMd || state.isLg, isDesktop: state.isXl || state.isXxl });
 };
 
 var StyledOverlay = styled__default['default'](Box)(templateObject_1$W || (templateObject_1$W = __makeTemplateObject(["\n  position: fixed;\n  top: 0px;\n  left: 0px;\n  width: 100%;\n  height: 100%;\n  background-color: ", ";\n  z-index: 20;\n"], ["\n  position: fixed;\n  top: 0px;\n  left: 0px;\n  width: 100%;\n  height: 100%;\n  background-color: ", ";\n  z-index: 20;\n"])), function (_a) {
@@ -4790,7 +4790,7 @@ var Logo = function (_a) {
     var linkComponent = React.useContext(MenuContext).linkComponent;
     var isAbsoluteUrl = href.startsWith("http");
     var innerLogo = (React__default['default'].createElement(React__default['default'].Fragment, null,
-        React__default['default'].createElement(StyledLogoWithTextIcon, { className: "mobile-icon", src: "/images/logo.png" }),
+        React__default['default'].createElement(StyledLogoWithTextIcon, { className: "mobile-icon", src: "/images/logo1.png" }),
         React__default['default'].createElement(StyledLogoWithTextIcon, { className: "desktop-icon", src: "/images/logoText.png" })));
     return (React__default['default'].createElement(Flex, null, isAbsoluteUrl ? (React__default['default'].createElement(StyledLink, { as: "a", href: href, "aria-label": "Pancake home page" }, innerLogo)) : (React__default['default'].createElement(StyledLink, { href: href, as: linkComponent, "aria-label": "Pancake home page" }, innerLogo))));
 };

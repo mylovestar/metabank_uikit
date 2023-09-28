@@ -19,13 +19,14 @@ const StyledLink = styled("a")`
   align-items: center;
   .mobile-icon {
     width: 80px;
+    height: 80px;
     ${({ theme }) => theme.mediaQueries.nav} {
       display: none;
     }
   }
   .desktop-icon {
     width: 280px !important;
-    height: 30px !important;
+    height: 45px !important;
     display: none;
     ${({ theme }) => theme.mediaQueries.nav} {
       display: block;
@@ -49,8 +50,8 @@ const StyledLogoWithTextIcon = styled.img`
   margin-right: 16px;
   width: 100%;
   @media (max-width: 768px) {
-    max-width: 60px;
-    max-height: 60px;
+    max-width: 80px;
+    max-height: 80px;
   }
 `;
 
@@ -59,7 +60,7 @@ const Logo: React.FC<Props> = ({ isDark, href }) => {
   const isAbsoluteUrl = href.startsWith("http");
   const innerLogo = (
     <>
-      <StyledLogoWithTextIcon className="mobile-icon" src="/images/logo.png"/>
+      <StyledLogoWithTextIcon className="mobile-icon" src="/images/logo1.png"/>
       <StyledLogoWithTextIcon className="desktop-icon" src="/images/logoText.png"/>
     </>
   );
