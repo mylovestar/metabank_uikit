@@ -4744,7 +4744,7 @@ var MenuItems = function (_a) {
 };
 
 var blink = keyframes(templateObject_1$8 || (templateObject_1$8 = __makeTemplateObject(["\n  0%,  100% { transform: scaleY(1); }\n  50% { transform:  scaleY(0.1); }\n"], ["\n  0%,  100% { transform: scaleY(1); }\n  50% { transform:  scaleY(0.1); }\n"])));
-var StyledLink = styled("a")(templateObject_2$4 || (templateObject_2$4 = __makeTemplateObject(["\n  display: flex;\n  align-items: center;\n  .mobile-icon {\n    width: 100px;\n    ", " {\n      display: none;\n    }\n  }\n  .desktop-icon {\n    width: 280px;\n    display: none;\n    height: 30px;\n    ", " {\n      display: block;\n    }\n  }\n  .eye {\n    animation-delay: 20ms;\n  }\n  &:hover {\n    .eye {\n      transform-origin: center 60%;\n      animation-name: ", ";\n      animation-duration: 350ms;\n      animation-iteration-count: 1;\n    }\n  }\n"], ["\n  display: flex;\n  align-items: center;\n  .mobile-icon {\n    width: 100px;\n    ", " {\n      display: none;\n    }\n  }\n  .desktop-icon {\n    width: 280px;\n    display: none;\n    height: 30px;\n    ", " {\n      display: block;\n    }\n  }\n  .eye {\n    animation-delay: 20ms;\n  }\n  &:hover {\n    .eye {\n      transform-origin: center 60%;\n      animation-name: ", ";\n      animation-duration: 350ms;\n      animation-iteration-count: 1;\n    }\n  }\n"])), function (_a) {
+var StyledLink = styled("a")(templateObject_2$4 || (templateObject_2$4 = __makeTemplateObject(["\n  display: flex;\n  align-items: center;\n  .mobile-icon {\n    width: 80px;\n    height: 80px;\n    ", " {\n      display: none;\n    }\n  }\n  .desktop-icon {\n    width: 280px;\n    display: none;\n    height: 30px;\n    ", " {\n      display: block;\n    }\n  }\n  .eye {\n    animation-delay: 20ms;\n  }\n  &:hover {\n    .eye {\n      transform-origin: center 60%;\n      animation-name: ", ";\n      animation-duration: 350ms;\n      animation-iteration-count: 1;\n    }\n  }\n"], ["\n  display: flex;\n  align-items: center;\n  .mobile-icon {\n    width: 80px;\n    height: 80px;\n    ", " {\n      display: none;\n    }\n  }\n  .desktop-icon {\n    width: 280px;\n    display: none;\n    height: 30px;\n    ", " {\n      display: block;\n    }\n  }\n  .eye {\n    animation-delay: 20ms;\n  }\n  &:hover {\n    .eye {\n      transform-origin: center 60%;\n      animation-name: ", ";\n      animation-duration: 350ms;\n      animation-iteration-count: 1;\n    }\n  }\n"])), function (_a) {
     var theme = _a.theme;
     return theme.mediaQueries.nav;
 }, function (_a) {
@@ -4973,9 +4973,10 @@ var Menu$1 = function (_a) {
     var _b;
     var _c = _a.linkComponent, linkComponent = _c === void 0 ? "a" : _c, userMenu = _a.userMenu, banner = _a.banner, globalMenu = _a.globalMenu, isDark = _a.isDark; _a.toggleTheme; var currentLang = _a.currentLang, setLang = _a.setLang, cakePriceUsd = _a.cakePriceUsd, links = _a.links, subLinks = _a.subLinks; _a.footerLinks; var activeItem = _a.activeItem, activeSubItem = _a.activeSubItem, langs = _a.langs; _a.buyCakeLabel; var children = _a.children;
     var isTablet = useMatchBreakpoints().isTablet;
+    var isMobile = useMatchBreakpoints().isMobile;
     var _d = useState(true), showMenu = _d[0], setShowMenu = _d[1];
     var refPrevOffset = useRef(typeof window === "undefined" ? 0 : window.pageYOffset);
-    var topBannerHeight = isTablet ? TOP_BANNER_HEIGHT_MOBILE : TOP_BANNER_HEIGHT;
+    var topBannerHeight = (isTablet || isMobile) ? TOP_BANNER_HEIGHT_MOBILE : TOP_BANNER_HEIGHT;
     var totalTopMenuHeight = banner ? MENU_HEIGHT + topBannerHeight : MENU_HEIGHT;
     useEffect(function () {
         var handleScroll = function () {
@@ -5016,9 +5017,9 @@ var Menu$1 = function (_a) {
                 React__default.createElement(StyledNav, null,
                     React__default.createElement(Flex, null,
                         React__default.createElement(Logo$1, { isDark: isDark, href: (_b = homeLink === null || homeLink === void 0 ? void 0 : homeLink.href) !== null && _b !== void 0 ? _b : "/" }),
-                        !isTablet && React__default.createElement(MenuItems, { items: links, activeItem: activeItem, activeSubItem: activeSubItem, ml: "24px" })),
+                        (!isTablet || !isMobile) && React__default.createElement(MenuItems, { items: links, activeItem: activeItem, activeSubItem: activeSubItem, ml: "24px" })),
                     React__default.createElement(Flex, { alignItems: "center", height: "100%" },
-                        !isTablet && (React__default.createElement(Box, { mr: "12px" },
+                    (!isTablet || !isMobile) && (React__default.createElement(Box, { mr: "12px" },
                             React__default.createElement(CakePrice$1, { cakePriceUsd: cakePriceUsd }))),
                         React__default.createElement(Box, { mt: "4px" },
                             React__default.createElement(LangSelector$1, { currentLang: currentLang, langs: langs, setLang: setLang, buttonScale: "xs", color: "textSubtle", hideLanguage: true })),
@@ -5030,7 +5031,7 @@ var Menu$1 = function (_a) {
                 (subLinksMobileOnly === null || subLinksMobileOnly === void 0 ? void 0 : subLinksMobileOnly.length) > 0 && (React__default.createElement(SubMenuItems, { items: subLinksMobileOnly, mt: totalTopMenuHeight + 1 + "px", activeItem: activeSubItem, isMobileOnly: true })))),
             React__default.createElement(BodyWrapper, { mt: !subLinks ? totalTopMenuHeight + 1 + "px" : "0" },
                 React__default.createElement(Inner, { isPushed: false, showMenu: showMenu }, children)),
-                isTablet && React__default.createElement(BottomNav, { items: links, activeItem: activeItem, activeSubItem: activeSubItem }))));
+                (isTablet || isMobile) && React__default.createElement(BottomNav, { items: links, activeItem: activeItem, activeSubItem: activeSubItem }))));
 };
 var templateObject_1$6, templateObject_2$3, templateObject_3$1, templateObject_4, templateObject_5, templateObject_6;
 

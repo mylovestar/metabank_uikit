@@ -82,11 +82,11 @@ const Menu: React.FC<NavProps> = ({
   buyCakeLabel,
   children,
 }) => {
-  const { isTablet } = useMatchBreakpoints();
+  const { isMobile, isTablet } = useMatchBreakpoints();
   const [showMenu, setShowMenu] = useState(true);
   const refPrevOffset = useRef(typeof window === "undefined" ? 0 : window.pageYOffset);
 
-  const topBannerHeight = isTablet ? TOP_BANNER_HEIGHT_MOBILE : TOP_BANNER_HEIGHT;
+  const topBannerHeight = isMobile || isTablet ? TOP_BANNER_HEIGHT_MOBILE : TOP_BANNER_HEIGHT;
 
   const totalTopMenuHeight = banner ? MENU_HEIGHT + topBannerHeight : MENU_HEIGHT;
 
@@ -133,10 +133,10 @@ const Menu: React.FC<NavProps> = ({
           <StyledNav>
             <Flex>
               <Logo isDark={isDark} href={homeLink?.href ?? "/"} />
-              {!isTablet && <MenuItems items={links} activeItem={activeItem} activeSubItem={activeSubItem} ml="24px" />}
+              {(!isTablet || !isMobile) && <MenuItems items={links} activeItem={activeItem} activeSubItem={activeSubItem} ml="24px" />}
             </Flex>
             <Flex alignItems="center" height="100%">
-              {!isTablet && (
+              {(!isTablet || !isMobile) && (
                 <Box mr="12px">
                   <CakePrice cakePriceUsd={cakePriceUsd} />
                 </Box>
@@ -174,7 +174,7 @@ const Menu: React.FC<NavProps> = ({
             {children}
           </Inner>
         </BodyWrapper>
-        {isTablet && <BottomNav items={links} activeItem={activeItem} activeSubItem={activeSubItem} />}
+        {(isTablet || isMobile) && <BottomNav items={links} activeItem={activeItem} activeSubItem={activeSubItem} />}
       </Wrapper>
     </MenuContext.Provider>
   );
